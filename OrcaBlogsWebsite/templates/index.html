@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}OrcaBlogs{% endblock %}
+{% block body %}
+  <main id="main">
+
+    <section id="hero-slider" class="hero-slider">
+      <div class="container-md" data-aos="fade-in">
+        <div class="row">
+          <div class="col-12">
+            <div class="swiper sliderFeaturedPosts">
+              <div class="swiper-wrapper">
+
+                {% for blog in blogs|slice:":4:-1" %}
+                <div class="swiper-slide">
+                  <a href="/{{blog.BlogSlug}}" class="img-bg d-flex align-items-end" style="background-image: url('{{blog.BlogImage}}');">
+                    <div class="img-bg-inner">
+                      <h2>{{blog.BlogName}}</h2>
+                      <p>{{blog.BlogDescription}}</p>
+                    </div>
+                  </a>
+                </div>
+                {% endfor %}
+
+              </div>
+              <div class="custom-swiper-button-next">
+                <span class="bi-chevron-right"></span>
+              </div>
+              <div class="custom-swiper-button-prev">
+                <span class="bi-chevron-left"></span>
+              </div>
+
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="posts" class="posts">
+      <div class="container" data-aos="fade-up">
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <div class="post-entry-1 lg">
+              <a href="/{{single.BlogSlug}}"><img src="{{single.BlogImage}}" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>{{blog.BlogDateAdded}}</span></div>
+              <h2><a href="/{{single.BlogSlug}}">{{single.BlogName}}</a></h2>
+              <p class="mb-4 d-block">{{single.BlogDescription}}</p>
+
+              <div class="d-flex align-items-center author">
+                <div class="name">
+                  <h3 class="m-0 p-0">{{single.BlogAuthor}}</h3>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+            <div class="row g-5">
+              <div class="col-lg-6 border-start custom-border">
+
+                {% for blog in blogs|slice:":4:-1" %}
+                <div class="post-entry-1">
+                  <a href="/{{blog.BlogSlug}}"><img src="{{blog.BlogImage}}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">{{blog.BlogCategory}}</span> <span class="mx-1">&bullet;</span> <span>{{blog.BlogDateAdded}}</span></div>
+                  <h2><a href="/{{blog.BlogSlug}}">{{blog.BlogName}}</a></h2> 
+                </div>
+                {% endfor %}
+
+              </div>
+              <div class="col-lg-6 border-start custom-border">
+
+                {% for blog in blogs|slice:"5:9:-1" %}
+                <div class="post-entry-1">
+                  <a href="/{{blog.BlogSlug}}"><img src="{{blog.BlogImage}}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">{{blog.BlogCategory}}</span> <span class="mx-1">&bullet;</span> <span>{{blog.BlogDateAdded}}</span></div>
+                  <h2><a href="/{{blog.BlogSlug}}">{{blog.BlogName}}</a></h2>
+                </div>
+                {% endfor %}
+
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+{% endblock %}

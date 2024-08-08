@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Blogs | OrcaBlogs{% endblock %}
+{% block body %}
+
+<main id="main">
+    <section>
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-12" data-aos="fade-up">
+
+
+            {% for b in blogs|slice:"::-1" %}
+            <div class="d-md-flex post-entry-2 half">
+                <a href="/{{b.BlogSlug}}" class="me-4 thumbnail">
+                  <img src="{{b.BlogImage}}" alt="" class="img-fluid">
+                </a>
+                <div>
+                  <div class="post-meta"><span class="date">{{b.BlogCategory}}</span> <span class="mx-1">&bullet;</span> <span>{{b.BlogDateAdded}}</span></div>
+                  <h3><a href="/{{b.BlogSlug}}">{{b.BlogName}}</a></h3>
+                  <p>{{b.BlogDescription}}</p>
+                  <div class="d-flex align-items-center author">
+                    <div class="name">
+                      <h3 class="m-0 p-0">{{b.BlogAuthor}}</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+
+        </div>
+      </div>
+    </section>
+  </main><!-- End #main -->
+
+{% endblock %}
