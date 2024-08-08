@@ -23,6 +23,8 @@ def ReadBlogs(request, bslug):
     bvar = BlogPost.objects.all()
     blogs = BlogPost.objects.get(BlogSlug = bslug)
     com = PostComment.objects.filter(PostID = blogs.BlogID)
+    blogs.Views = int(blogs.Views) + 1
+    blogs.save()
     return render(request, "reader.html", {
         "name" : blogs.BlogName, "date" : blogs.BlogDateAdded,
         "desc" : blogs.BlogDescription,
