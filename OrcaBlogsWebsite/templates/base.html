@@ -110,7 +110,7 @@
             <ul class="footer-links footer-blog-entry list-unstyled">
 
               
-              {% for b in blogs|slice:":5:-1" %}
+              {% for b in blogs|slice:"::-1"|slice:":5" %}
               <li>
                 <a href="/{{b.BlogSlug}}" class="d-flex align-items-center">
                   <img src="{{b.BlogImage}}" alt="" class="img-fluid me-3">

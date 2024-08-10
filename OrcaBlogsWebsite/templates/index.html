@@ -10,7 +10,7 @@
             <div class="swiper sliderFeaturedPosts">
               <div class="swiper-wrapper">
 
-                {% for blog in blogs|slice:":4:-1" %}
+                {% for blog in blogs|slice:"::-1"|slice:":4" %}
                 <div class="swiper-slide">
                   <a href="/{{blog.BlogSlug}}" class="img-bg d-flex align-items-end" style="background-image: url('{{blog.BlogImage}}');">
                     <div class="img-bg-inner">
@@ -42,7 +42,7 @@
           <div class="col-lg-4">
             <div class="post-entry-1 lg">
               <a href="/{{single.BlogSlug}}"><img src="{{single.BlogImage}}" alt="" class="img-fluid"></a>
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">&bullet;</span> <span>{{blog.BlogDateAdded}}</span></div>
+              <div class="post-meta"><span class="date">{{single.BlogCategory}}</span> <span class="mx-1">&bullet;</span> <span>{{single.BlogDateAdded}}</span></div>
               <h2><a href="/{{single.BlogSlug}}">{{single.BlogName}}</a></h2>
               <p class="mb-4 d-block">{{single.BlogDescription}}</p>
 
@@ -59,7 +59,7 @@
             <div class="row g-5">
               <div class="col-lg-6 border-start custom-border">
 
-                {% for blog in blogs|slice:":4:-1" %}
+                {% for blog in blogs|slice:"::-1"|slice:"1:5" %}
                 <div class="post-entry-1">
                   <a href="/{{blog.BlogSlug}}"><img src="{{blog.BlogImage}}" alt="" class="img-fluid"></a>
                   <div class="post-meta"><span class="date">{{blog.BlogCategory}}</span> <span class="mx-1">&bullet;</span> <span>{{blog.BlogDateAdded}}</span></div>
@@ -70,7 +70,7 @@
               </div>
               <div class="col-lg-6 border-start custom-border">
 
-                {% for blog in blogs|slice:"5:9:-1" %}
+                {% for blog in blogs|slice:"::-1"|slice:"5:9" %}
                 <div class="post-entry-1">
                   <a href="/{{blog.BlogSlug}}"><img src="{{blog.BlogImage}}" alt="" class="img-fluid"></a>
                   <div class="post-meta"><span class="date">{{blog.BlogCategory}}</span> <span class="mx-1">&bullet;</span> <span>{{blog.BlogDateAdded}}</span></div>
